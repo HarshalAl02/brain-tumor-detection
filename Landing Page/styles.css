@@ -1,0 +1,487 @@
+/* General Styles */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #082022;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+/* Header Section */
+/* Header Section */
+.header {
+    background: #133c51;
+    color: #fff;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: 148px; /* Set a fixed height for the header */
+    box-sizing: border-box; /* Ensure padding is included in height calculation */
+}
+@keyframes slideInLeft{
+    from{
+        transform: translate(-300px);
+    }
+    to{
+        transform: translate(0);
+    }
+}
+
+.header .logo {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.header .nav {
+    flex-grow: 1; 
+    display: flex;
+    justify-content: flex-end;
+}
+
+.header .nav ul {
+    display: flex;
+    gap: 1.5rem; /* Control spacing between the list items */
+    margin: 0; /* Remove extra margins */
+    padding: 0; /* Remove default padding */
+    align-items: center; /* Align navigation items vertically */
+}
+
+.header .nav ul li {
+    display: inline-block;
+}
+
+.header .nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.header .nav ul li a:hover {
+    color: #b6e6e8;
+}
+
+/* Logo Container */
+.logo-container {
+    display: flex;
+    align-items: center; /* Align the "NeuroVision" heading and logo vertically */
+    gap: 10px; /* Adjust space between the logo and the heading */
+    margin: 0; /* Remove any default margins */
+}
+
+/* Logo Image Styling */
+.logo-image {
+    height: 100%; /* Let the logo image fill the height of the header */
+    max-height: 80px; /* Restrict the maximum height of the logo */
+    width: auto; /* Maintain aspect ratio */
+    object-fit: contain; /* Prevent distortion */
+}
+
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+
+.btn-primary {
+    background: #f39c12;
+    color: #fff;
+    padding: 1rem 1rem;
+    border: none;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background 0.3s;
+}
+
+.btn-primary:hover {
+    background: #a95a0b;
+    color: #fff;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    color: #fff;
+    text-align: center;
+    padding: 4rem 0;
+    overflow: hidden;
+    height: 100vh; /* Set the height of the hero section */
+}
+
+.hero h2 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1; /* Ensure text is above the video */
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1; /* Ensure text is above the video */
+}
+
+.container {
+    position: relative;
+    z-index: 1; /* Ensure container is above the video */
+}
+.hero {
+    position: relative;
+    color: #fff;
+    text-align: center;
+    padding: 4rem 0;
+    height: 100vh;
+    background: url('https://i.pinimg.com/736x/21/68/6a/21686a4d02f969dfbe09ca8003fd153c.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Black overlay with 50% opacity */
+    z-index: 1; /* Place overlay above the image */
+}
+
+.container {
+    position: relative;
+    z-index: 2; /* Ensure text is above the overlay */
+}
+.hero .btn-primary{
+    transition: background 0.3s;
+}
+
+/* About Section */
+.about {
+    padding: 5rem 0;
+    background: #90e0ef;
+}
+
+.about h1 {
+    text-align: center;
+    font-size: 33px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 2rem;
+}
+
+.about .about-grid {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap; /* Ensure responsiveness */
+}
+
+.about .card {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    flex: 1 1 10%; 
+    min-height: 250px; 
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-between; 
+    transition: transform 0.3s ease, box-shadow 0.4s ease;
+}
+.about .card:hover {
+    transform: translateY(-7px); 
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); 
+}
+
+.about .card i {
+    margin-bottom: 1rem;
+    color: #1e90ff;
+}
+
+.about .card h3 {
+    margin-bottom: 1rem;
+}
+
+.about .card p {
+    flex-grow: 1;
+}
+
+/* Feature Section */
+.features {
+    padding: 5rem 0;
+    background: #dcf4f7;
+}
+
+.features h1 {
+    text-align: center;
+    font-size: 27px;
+    margin-bottom: 2rem;
+}
+
+.features-grid {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.feature-item {
+    text-align: center;
+    padding: 1.5rem;
+    border: 1px solid #d5d0d0;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    max-width: 600px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: #fff;
+}
+
+.feature-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.feature-item h3 {
+    color: #05447c;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.feature-item p {
+    font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
+    color: #555;
+}
+
+/* Hover Effects */
+.feature-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.feature-item:hover img {
+    transform: scale(1.1);
+}
+
+/* Call-to-Action Section */
+.cta {
+    background: #48CAE4;
+    color: #fff;
+    text-align: center;
+    padding: 3rem 0;
+}
+
+.cta h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* Footer */
+.footer {
+    background: #03045E;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+/* Chatbot Section */
+.chatbot {
+    position: fixed;
+    bottom: 100px;  /* Adjusted to accommodate larger size */
+    right: 30px;
+    width: 350px;   /* Increased from 300px */
+    height: 500px;  /* Increased from 400px */
+    border-radius: 12px;  /* Slightly increased for better proportion */
+    display: none;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);  /* Slightly increased shadow for visibility */
+}
+
+.chatbot.active {
+    display: block;
+}
+
+.chatbot-frame {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 12px;  /* Match the container's border-radius */
+    padding: 0px;  /* Increased padding for better spacing */
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+/* Chatbot Toggle Button */
+.chatbot-toggle {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 70px;   /* Slightly increased size */
+    height: 70px;  /* Slightly increased size */
+    background: #007bff;
+    color: white;
+    text-align: center;
+    line-height: 70px;  /* Match the new height */
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);  /* Slightly increased shadow */
+    cursor: pointer;
+    font-size: 2.2em;  /* Slightly increased font size */
+    text-decoration: none;
+    z-index: 10000;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.chatbot-toggle:hover {
+    background-color: #0056b3;
+    transform: scale(1.1);
+}
+
+/* Media query for smaller screens */
+@media (max-width: 480px) {
+    .chatbot {
+        bottom: 80px;
+        right: 20px;
+        width: calc(100% - 40px);  /* Full width minus margins */
+        height: 60vh;  /* 60% of viewport height */
+        max-height: 500px;  /* Maximum height */
+    }
+
+    .chatbot-toggle {
+        bottom: 20px;
+        right: 20px;
+    }
+}
+
+/* How it Works Section */
+.about {
+    padding: 4rem 0;
+    background: #eff7ff; /* Subtle background color for professionalism */
+}
+
+.about h1 {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: 'Arial', sans-serif;
+    color: #1d3557;
+    margin-bottom: 2.5rem;
+}
+
+.about .about-grid {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap; /* Ensures responsiveness */
+    max-width: 1200px;
+    margin: 0 auto; /* Center content in the container */
+}
+
+.about .card {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    padding: 3rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    flex: 1 1 calc(30% - 2rem); /* 3 cards per row with space in between */
+    max-width: 250px; /* Limit card size for uniformity */
+    height: 220px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.about .card img {
+    max-width: 230px; /* Smaller image size for professionalism */
+    margin-bottom: 1.5rem;
+    border-radius: 1%; /* Rounded images for a modern look */
+    border: 2px solid #457b9d;
+}
+
+.about .card p {
+    font-size: 0.96rem;
+    color: #333;
+    line-height: 1.5;
+    margin-top: 1rem;
+}
+
+.how-it-works {
+    padding: 4rem 0;
+    background: #eff7ff;
+}
+
+.how-it-works h1 {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: 'Arial', sans-serif;
+    color: #1d3557;
+    margin-bottom: 2.5rem;
+}
+
+.how-it-works .how-it-works-grid {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.how-it-works .card {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    padding: 3rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    flex: 1 1 calc(30% - 2rem);
+    max-width: 250px;
+    height: 220px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.how-it-works .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.how-it-works .card img {
+    max-width: 230px;
+    margin-bottom: 1.5rem;
+    border-radius: 1%;
+    border: 2px solid #457b9d;
+}
+
+.how-it-works .card p {
+    font-size: 0.96rem;
+    color: #333;
+    line-height: 1.5;
+    margin-top: 1rem;
+}
