@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div id="chatbox">
+        <div id="chat-log"></div>
+        <div class="input-container">
+            <input type="text" id="input" placeholder="Type a message..." autocomplete="off" autocorrect="off" />
+            <button class="send-button" onclick="sendMessage()">↑</button>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            displayInitialMessage();
+        }
+
+        function displayInitialMessage() {
+            const chatLog = document.getElementById('chat-log');
+            chatLog.innerHTML += "<div><b>Bot:</b> Hello, this is your chatbot assistant. I'm here to help you related to brain tumor detection, symptoms, treatments, and much more. How can I assist you today?</div>";
+            chatLog.scrollTop = chatLog.scrollHeight;
+        }
+
+        function sendMessage() {
+            const userMessage = document.getElementById('input').value;
+            if (userMessage.trim() === '') return;
+
+            const chatLog = document.getElementById('chat-log');
+            chatLog.innerHTML += "<div><b>You:</b> " + userMessage + "</div>";
+            document.getElementById('input').value = '';
+            chatLog.scrollTop = chatLog.scrollHeight;
+
+            fetch(`/get?msg=${userMessage}`)
+                .then(response => response.json())
+                .then(data => {
+                    const botResponse = data.response;
+                    typeWriter(botResponse);
+                });
+        }
+
+        function typeWriter(text) {
+            const chatLog = document.getElementById('chat-log');
+            let index = 0;
+            const typingSpeed = Math.floor(Math.random() * 20) + 10;
+            setTimeout(() => {
+                chatLog.innerHTML += "<div><b>Bot:</b> </div>";
+                const botMessageDiv = chatLog.lastChild;
+                const interval = setInterval(() => {
+                    botMessageDiv.innerHTML += text[index];
+                    chatLog.scrollTop = chatLog.scrollHeight;
+                    index++;
+                    if (index === text.length) {
+                        clearInterval(interval);
+                    }
+                }, typingSpeed);
+            }, 300);
+        }
+
+        document.getElementById('input').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        document.getElementById('input').addEventListener('focus', function() {
+            this.value = '';
+        });
+    </script>
+</body>
+</html>
