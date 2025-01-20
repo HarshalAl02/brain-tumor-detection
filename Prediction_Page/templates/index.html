@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain Tumor Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1>Brain Tumor Detection</h1>
+            <p>Empowering accurate and reliable analysis</p>
+        </div>
+    </header>
+    
+    <div class="box-container">
+        <!-- Upload Section -->
+        <section class="upload-section">
+            <h2>Upload an MRI Image for Analysis</h2>
+            <form method="POST" enctype="multipart/form-data" action="/predict" id="upload-form">
+                <label class="custom-file-upload">
+                    <input type="file" name="image" accept="image/*" required onchange="updateFileName(this)">
+                    Select File
+                </label>
+                <span id="file-name" class="file-name">No file selected</span>
+                <button type="submit" class="btn">Analyze</button>
+            </form>
+            <div id="loading" class="loading" style="display: none;">Analyzing...</div>
+        </section>
+    
+        <!-- Result Section -->
+        {% if prediction %}
+        <section class="result-section">
+            <div class="result-card">
+                <h2>Analysis Result</h2>
+                <p class="result">
+                    Tumor Detected: <span class="prediction {{ 'yes' if prediction == 'Yes' else 'no' }}">{{ prediction }}</span>
+                </p>
+            </div>
+        </section>
+        {% endif %}
+    </div>
+
+<!-- FAQ Section -->
+<section id="faq" class="faq-section">
+    <div class="container">
+        <h1>Frequently Asked Questions</h1>
+        <div class="faq-item">
+            <div class="faq-question">
+                <h3>What is a brain tumor?</h3>
+                <span class="arrow">&#9660;</span>
+            </div>
+            <div class="faq-answer">
+                <p>A brain tumor is an abnormal growth of cells in the brain or surrounding tissues. It can be benign (non-cancerous) or malignant (cancerous).</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">
+                <h3>How does this website detect brain tumors?</h3>
+                <span class="arrow">&#9660;</span>
+            </div>
+            <div class="faq-answer">
+                <p>Our website uses advanced algorithms and machine learning to analyze MRI scans and identify potential tumor regions.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">
+                <h3>Is the analysis provided accurate?</h3>
+                <span class="arrow">&#9660;</span>
+            </div>
+            <div class="faq-answer">
+                <p>We strive to ensure high accuracy in our analysis, but it’s always recommended to consult a medical professional for confirmation.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">
+                <h3>Is this service free?</h3>
+                <span class="arrow">&#9660;</span>
+            </div>
+            <div class="faq-answer">
+                <p>Currently, our service is free to use for brain tumor detection purposes.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <p>&copy; 2024 NeuroVision. All Rights Reserved.</p>
+        <ul class="social-links">
+            <li><a href="https://facebook.com" target="_blank" title="Visit our Facebook"><i class="fab fa-facebook"></i></a></li>
+            <li><a href="https://twitter.com" target="_blank" title="Visit our Twitter"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="https://linkedin.com" target="_blank" title="Visit our LinkedIn"><i class="fab fa-linkedin"></i></a></li>
+        </ul>
+    </div>
+</footer>
+
+
+
+    <script>
+        function updateFileName(input) {
+            const fileName = input.files[0] ? input.files[0].name : 'No file selected';
+            document.getElementById('file-name').textContent = fileName;
+        }
+
+        document.getElementById('upload-form').onsubmit = function() {
+            document.getElementById('loading').style.display = 'block';
+        };
+
+        document.querySelectorAll('.faq-question').forEach(question => {
+        question.addEventListener('click', () => {
+            const parent = question.parentElement;
+
+            // Close other active items
+            document.querySelectorAll('.faq-item').forEach(item => {
+                if (item !== parent) item.classList.remove('active');
+            });
+
+            // Toggle the current item
+            parent.classList.toggle('active');
+        });
+    });
+
+
+    </script>
+</body>
+</html>
